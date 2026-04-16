@@ -106,6 +106,7 @@ namespace Azure.AI.Language.Documents
                 return null;
             }
             DocumentLocationKind kind = default;
+            string location = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
@@ -114,12 +115,17 @@ namespace Azure.AI.Language.Documents
                     kind = new DocumentLocationKind(prop.Value.GetString());
                     continue;
                 }
+                if (prop.NameEquals("location"u8))
+                {
+                    location = prop.Value.GetString();
+                    continue;
+                }
                 if (options.Format != "W")
                 {
                     additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
                 }
             }
-            return new UnknownDocumentLocation(kind, additionalBinaryDataProperties);
+            return new UnknownDocumentLocation(kind, location, additionalBinaryDataProperties);
         }
     }
 }

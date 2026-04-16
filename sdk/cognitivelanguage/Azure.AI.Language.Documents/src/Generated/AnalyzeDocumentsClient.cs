@@ -13,6 +13,7 @@ using Azure;
 using Azure.Core;
 using Azure.Core.Pipeline;
 
+[assembly: AzureResourceProviderNamespace("Microsoft.CognitiveServices")]
 namespace Azure.AI.Language.Documents
 {
     /// <summary>

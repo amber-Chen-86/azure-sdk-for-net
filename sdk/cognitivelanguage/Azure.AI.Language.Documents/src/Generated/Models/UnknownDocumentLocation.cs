@@ -14,8 +14,9 @@ namespace Azure.AI.Language.Documents
     {
         /// <summary> Initializes a new instance of <see cref="UnknownDocumentLocation"/>. </summary>
         /// <param name="kind"> The kind of the document location. </param>
+        /// <param name="location"> The location of the document. </param>
         /// <param name="additionalBinaryDataProperties"> Keeps track of any properties unknown to the library. </param>
-        internal UnknownDocumentLocation(DocumentLocationKind kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)
+        internal UnknownDocumentLocation(DocumentLocationKind kind, string location, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", location, additionalBinaryDataProperties)
         {
         }
     }

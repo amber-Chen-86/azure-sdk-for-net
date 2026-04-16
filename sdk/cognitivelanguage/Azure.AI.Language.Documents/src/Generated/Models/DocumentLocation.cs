@@ -21,21 +21,28 @@ namespace Azure.AI.Language.Documents
 
         /// <summary> Initializes a new instance of <see cref="DocumentLocation"/>. </summary>
         /// <param name="kind"> The kind of the document location. </param>
-        private protected DocumentLocation(DocumentLocationKind kind)
+        /// <param name="location"> The location of the document. </param>
+        private protected DocumentLocation(DocumentLocationKind kind, string location)
         {
             Kind = kind;
+            Location = location;
         }
 
         /// <summary> Initializes a new instance of <see cref="DocumentLocation"/>. </summary>
         /// <param name="kind"> The kind of the document location. </param>
+        /// <param name="location"> The location of the document. </param>
         /// <param name="additionalBinaryDataProperties"> Keeps track of any properties unknown to the library. </param>
-        internal DocumentLocation(DocumentLocationKind kind, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal DocumentLocation(DocumentLocationKind kind, string location, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             Kind = kind;
+            Location = location;
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
         /// <summary> The kind of the document location. </summary>
         internal DocumentLocationKind Kind { get; set; }
+
+        /// <summary> The location of the document. </summary>
+        public virtual string Location { get; set; }
     }
 }

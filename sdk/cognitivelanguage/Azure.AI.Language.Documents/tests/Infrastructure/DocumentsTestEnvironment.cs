@@ -12,11 +12,6 @@ namespace Azure.AI.Language.Documents.Tests
     public class DocumentsTestEnvironment : TestEnvironment
     {
         /// <summary>
-        /// Gets the master API key.
-        /// </summary>
-        public string ApiKey => GetRecordedVariable("DOCUMENTS_KEY", options => options.IsSecret());
-
-        /// <summary>
         /// Gets the endpoint.
         /// </summary>
         public string Endpoint => GetRecordedVariable("DOCUMENTS_ENDPOINT");

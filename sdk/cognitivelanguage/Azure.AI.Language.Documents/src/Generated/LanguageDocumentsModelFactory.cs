@@ -174,19 +174,19 @@ namespace Azure.AI.Language.Documents
         /// <param name="warnings"> Warnings encountered while processing document. </param>
         /// <param name="statistics"> if showStats=true was specified in the request this field will contain information about the document payload. </param>
         /// <param name="source"> Location of the input document. </param>
-        /// <param name="target"> Array of document results generated after the analysis. </param>
+        /// <param name="targets"> Array of document results generated after the analysis. </param>
         /// <returns> A new <see cref="Documents.DocumentAnalysisDocumentResult"/> instance for mocking. </returns>
-        public static DocumentAnalysisDocumentResult DocumentAnalysisDocumentResult(string id = default, IEnumerable<DocumentWarning> warnings = default, DocumentStatistics statistics = default, DocumentLocation source = default, IEnumerable<DocumentLocation> target = default)
+        public static DocumentAnalysisDocumentResult DocumentAnalysisDocumentResult(string id = default, IEnumerable<DocumentWarning> warnings = default, DocumentStatistics statistics = default, DocumentLocation source = default, IEnumerable<DocumentLocation> targets = default)
         {
             warnings ??= new ChangeTrackingList<DocumentWarning>();
-            target ??= new ChangeTrackingList<DocumentLocation>();
+            targets ??= new ChangeTrackingList<DocumentLocation>();
 
             return new DocumentAnalysisDocumentResult(
                 id,
                 warnings.ToList(),
                 statistics,
                 source,
-                target.ToList(),
+                targets.ToList(),
                 additionalBinaryDataProperties: null);
         }
 
@@ -214,10 +214,11 @@ namespace Azure.AI.Language.Documents
         /// Please note this is the abstract base class. The derived classes available for instantiation are: <see cref="Documents.AzureBlobDocumentLocation"/>.
         /// </summary>
         /// <param name="kind"> The kind of the document location. </param>
+        /// <param name="location"> The location of the document. </param>
         /// <returns> A new <see cref="Documents.DocumentLocation"/> instance for mocking. </returns>
-        public static DocumentLocation DocumentLocation(string kind = default)
+        public static DocumentLocation DocumentLocation(string kind = default, string location = default)
         {
-            return new UnknownDocumentLocation(new DocumentLocationKind(kind), additionalBinaryDataProperties: null);
+            return new UnknownDocumentLocation(new DocumentLocationKind(kind), location, additionalBinaryDataProperties: null);
         }
 
         /// <summary> Document location for azure blobs. </summary>

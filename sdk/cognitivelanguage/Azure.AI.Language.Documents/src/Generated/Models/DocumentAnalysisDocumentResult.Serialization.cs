@@ -94,9 +94,9 @@ namespace Azure.AI.Language.Documents
             }
             writer.WritePropertyName("source"u8);
             writer.WriteObjectValue(Source, options);
-            writer.WritePropertyName("target"u8);
+            writer.WritePropertyName("targets"u8);
             writer.WriteStartArray();
-            foreach (DocumentLocation item in Target)
+            foreach (DocumentLocation item in Targets)
             {
                 writer.WriteObjectValue(item, options);
             }
@@ -147,7 +147,7 @@ namespace Azure.AI.Language.Documents
             IList<DocumentWarning> warnings = default;
             DocumentStatistics statistics = default;
             DocumentLocation source = default;
-            IList<DocumentLocation> target = default;
+            IList<DocumentLocation> targets = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
@@ -180,14 +180,14 @@ namespace Azure.AI.Language.Documents
                     source = DocumentLocation.DeserializeDocumentLocation(prop.Value, options);
                     continue;
                 }
-                if (prop.NameEquals("target"u8))
+                if (prop.NameEquals("targets"u8))
                 {
                     List<DocumentLocation> array = new List<DocumentLocation>();
                     foreach (var item in prop.Value.EnumerateArray())
                     {
                         array.Add(DocumentLocation.DeserializeDocumentLocation(item, options));
                     }
-                    target = array;
+                    targets = array;
                     continue;
                 }
                 if (options.Format != "W")
@@ -200,7 +200,7 @@ namespace Azure.AI.Language.Documents
                 warnings,
                 statistics,
                 source,
-                target,
+                targets,
                 additionalBinaryDataProperties);
         }
     }

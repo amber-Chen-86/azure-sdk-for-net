@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Azure.AI.Language.Documents;
 using Azure.Core;
 using Azure.Core.TestFramework;
+using Azure.Identity;
 using NUnit.Framework;
 
 namespace Azure.AI.Language.Documents.Tests
@@ -17,16 +18,18 @@ namespace Azure.AI.Language.Documents.Tests
             : base(isAsync, null /* RecordedTestMode.Record /* to record */)
         {
             CompareBodies = false;
-            SanitizedHeaders.Add("Ocp-Apim-Subscription-Key");
+            SanitizedHeaders.Add("Authorization");
         }
 
         private AnalyzeDocumentsClient CreateDocumentsClient()
         {
             AnalyzeDocumentsClientOptions options = InstrumentClientOptions(new AnalyzeDocumentsClientOptions());
+            DefaultAzureCredential credential = new DefaultAzureCredential();
+
             return InstrumentClient(
                 new AnalyzeDocumentsClient(
                     TestEnvironment.Endpoint,
-                    new AzureKeyCredential(TestEnvironment.ApiKey),
+                    credential,
                     options));
         }
 

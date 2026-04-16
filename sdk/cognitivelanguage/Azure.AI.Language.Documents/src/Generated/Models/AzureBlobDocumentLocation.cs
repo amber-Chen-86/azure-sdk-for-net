@@ -16,11 +16,10 @@ namespace Azure.AI.Language.Documents
         /// <summary> Initializes a new instance of <see cref="AzureBlobDocumentLocation"/>. </summary>
         /// <param name="location"> The location of the document. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="location"/> is null. </exception>
-        public AzureBlobDocumentLocation(string location) : base(DocumentLocationKind.AzureBlob)
+        public AzureBlobDocumentLocation(string location) : base(DocumentLocationKind.AzureBlob, location)
         {
             Argument.AssertNotNull(location, nameof(location));
 
-            Location = location;
         }
 
         /// <summary> Initializes a new instance of <see cref="AzureBlobDocumentLocation"/>. </summary>
@@ -28,14 +27,13 @@ namespace Azure.AI.Language.Documents
         /// <param name="additionalBinaryDataProperties"> Keeps track of any properties unknown to the library. </param>
         /// <param name="location"> The location of the document. </param>
         /// <param name="managedIdentityClientId"> The user managed identity client Id to use to authenticate with the storage account. </param>
-        internal AzureBlobDocumentLocation(DocumentLocationKind kind, IDictionary<string, BinaryData> additionalBinaryDataProperties, string location, string managedIdentityClientId) : base(kind, additionalBinaryDataProperties)
+        internal AzureBlobDocumentLocation(DocumentLocationKind kind, IDictionary<string, BinaryData> additionalBinaryDataProperties, string location, string managedIdentityClientId) : base(kind, location, additionalBinaryDataProperties)
         {
-            Location = location;
             ManagedIdentityClientId = managedIdentityClientId;
         }
 
         /// <summary> The location of the document. </summary>
-        public string Location { get; set; }
+        public override string Location { get; set; }
 
         /// <summary> The user managed identity client Id to use to authenticate with the storage account. </summary>
         public string ManagedIdentityClientId { get; set; }

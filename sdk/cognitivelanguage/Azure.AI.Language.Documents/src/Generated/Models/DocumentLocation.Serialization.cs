@@ -83,6 +83,8 @@ namespace Azure.AI.Language.Documents
             }
             writer.WritePropertyName("kind"u8);
             writer.WriteStringValue(Kind.ToString());
+            writer.WritePropertyName("location"u8);
+            writer.WriteStringValue(Location);
             if (options.Format != "W" && _additionalBinaryDataProperties != null)
             {
                 foreach (var item in _additionalBinaryDataProperties)
