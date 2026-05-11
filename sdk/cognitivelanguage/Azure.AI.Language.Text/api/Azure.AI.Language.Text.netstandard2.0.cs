@@ -233,7 +233,6 @@ namespace Azure.AI.Language.Text
         public static Azure.AI.Language.Text.AnalyzeTextErrorCode Timeout { get { throw null; } }
         public static Azure.AI.Language.Text.AnalyzeTextErrorCode TooManyRequests { get { throw null; } }
         public static Azure.AI.Language.Text.AnalyzeTextErrorCode Unauthorized { get { throw null; } }
-        public static Azure.AI.Language.Text.AnalyzeTextErrorCode Warning { get { throw null; } }
         public bool Equals(Azure.AI.Language.Text.AnalyzeTextErrorCode other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }

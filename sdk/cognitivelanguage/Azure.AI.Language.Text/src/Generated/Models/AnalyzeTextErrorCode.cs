@@ -48,8 +48,6 @@ namespace Azure.AI.Language.Text
         private const string QuotaExceededValue = "QuotaExceeded";
         /// <summary> Conflict error. </summary>
         private const string ConflictValue = "Conflict";
-        /// <summary> Warning error. </summary>
-        private const string WarningValue = "Warning";
 
         /// <summary> Initializes a new instance of <see cref="AnalyzeTextErrorCode"/>. </summary>
         /// <param name="value"> The value. </param>
@@ -111,9 +109,6 @@ namespace Azure.AI.Language.Text
 
         /// <summary> Conflict error. </summary>
         public static AnalyzeTextErrorCode Conflict { get; } = new AnalyzeTextErrorCode(ConflictValue);
-
-        /// <summary> Warning error. </summary>
-        public static AnalyzeTextErrorCode Warning { get; } = new AnalyzeTextErrorCode(WarningValue);
 
         /// <summary> Determines if two <see cref="AnalyzeTextErrorCode"/> values are the same. </summary>
         /// <param name="left"> The left value to compare. </param>
